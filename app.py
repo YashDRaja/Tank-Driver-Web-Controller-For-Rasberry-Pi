@@ -31,8 +31,35 @@ def run_task(str):
 	exec(str)
 
 def forward(sec, power): 
-	print("Driving motors with " + str(power) + " power for " + str(sec) + " seconds!")
+	print("Driving forwards with " + str(power) + " power for " + str(sec) + " seconds!")
 	drive_motor(left_pin, power) 
+	drive_motor(right_pin, power)
+	time.sleep(sec)
+	print("Stopping...")
+	drive_motor(left_pin, STOP)
+	drive_motor(right_pin, STOP)
+
+def backward(sec, power): 
+	print("Driving backwards with " + str(power) + " power for " + str(sec) + " seconds!")
+	drive_motor(left_pin, -power) 
+	drive_motor(right_pin, -power)
+	time.sleep(sec)
+	print("Stopping...")
+	drive_motor(left_pin, STOP)
+	drive_motor(right_pin, STOP)
+
+def turnRight(sec, power): 
+	print("Driving backwards with " + str(power) + " power for " + str(sec) + " seconds!")
+	drive_motor(left_pin, power) 
+	drive_motor(right_pin, -power)
+	time.sleep(sec)
+	print("Stopping...")
+	drive_motor(left_pin, STOP)
+	drive_motor(right_pin, STOP)
+
+def turnLeft(sec, power): 
+	print("Driving backwards with " + str(power) + " power for " + str(sec) + " seconds!")
+	drive_motor(left_pin, -power) 
 	drive_motor(right_pin, power)
 	time.sleep(sec)
 	print("Stopping...")

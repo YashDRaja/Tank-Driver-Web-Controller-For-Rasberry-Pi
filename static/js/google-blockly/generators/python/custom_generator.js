@@ -12,4 +12,18 @@ Blockly.Python['go_backward'] = function(block) {
   // TODO: Assemble Python into code variable.
   var code = 'backward('+value_seconds +","+value_power+")\n";
   return code;
-};	
+};
+Blockly.Python['turn_right'] = function(block) {
+  var value_seconds = Blockly.Python.valueToCode(block, 'seconds', Blockly.Python.ORDER_ATOMIC);
+  var value_power = Blockly.Python.valueToCode(block, 'power', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = 'turnRight('+value_seconds + "," + value_power+')\n';
+  return code;
+};
+Blockly.Python['turn_left'] = function(block) {
+  var value_seconds = Blockly.Python.valueToCode(block, 'seconds', Blockly.Python.ORDER_ATOMIC);
+  var value_power = Blockly.Python.valueToCode(block, 'power', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = 'turnLeft('+value_seconds + "," + value_power+')\n';
+  return code;
+};
