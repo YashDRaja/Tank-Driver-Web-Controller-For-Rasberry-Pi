@@ -58,24 +58,25 @@
     });
 
 
-function sendToPi(code) {
-	$.ajax({
-		type:"POST",
-		cache: false,
-		dataType: "json",
-		url: "robot.py",
-		data: {run:code},
-		success: function(data) {
-			
-		}
-	});
-}
+    function sendToPi(code) {
+        $.ajax({
+            type:"POST",
+            cache: false,
+            dataType: "json",
+            url: "robot.py",
+            data: {run:code},
+            success: function(data) {
+                
+            }
+        });
+    }
 
-function sendButtonClicked() {
-   var code = Blockly.Python.workspaceToCode(workspace);
-   console.log(code);
-   sendToPi(code)
-}
+    function sendButtonClicked() {
+        var code = Blockly.Python.workspaceToCode(workspace);
+        console.log(code);
+        sendToPi(code)
+    }
+
 </script>
 
 </body>
