@@ -9,7 +9,24 @@
 <body>
     <header>
         <h1>Tank Driving Application</h1>
-        <p>Using blockly!</p>    
+        <p id="under">Using blockly!</p>    
+        <p id ="Intro">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra, 
+            erat vitae malesuada feugiat, quam magna dapibus lorem, ac accumsan enim magna 
+            quis nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, 
+            per inceptos himenaeos. Aliquam consectetur elementum facilisis. Nam sit amet luctus 
+            magna. Nullam viverra a quam eu volutpat. Curabitur at lobortis mi. Sed pharetra 
+            sapien eget erat varius tristique. In ac aliquam dui. Phasellus sit amet semper 
+            purus. Etiam ut interdum lectus, nec venenatis lacus. Vestibulum ac lectus 
+            non sem tincidunt dignissim. Suspendisse potenti. Aliquam erat volutpat.
+            Praesent ullamcorper, dolor eu posuere iaculis, sapien ipsum sagittis purus, 
+            sit amet cursus sem nunc in lorem. Nulla eu neque massa. Duis vulputate
+            ipsum vitae aliquam pretium. Sed scelerisque, risus sed aliquam posuere, 
+            elit ipsum tempor sapien, a accumsan mauris arcu quis ipsum. Curabitur
+            hendrerit molestie arcu eget ultricies. Fusce quis risus et nunc imperdiet 
+            viverra. Nam sit amet finibus nisl. Pellentesque habitant morbi tristique 
+            senectus et netus et malesuada fames ac turpis egestas.
+        </p>
         <button type="button" onclick="myTestFunction()">Run code</button>
     </header>
     <div id="blocklyDiv">
@@ -22,6 +39,7 @@
                 <block type="text"></block>
                 <block type="text_print"></block>
                 <block type="go_forward"></block>
+                <block type="go_backward"></block>
             </xml>
     </div>
     
@@ -51,6 +69,7 @@
 <script>
 function myTestFunction() {
    var code = Blockly.Python.workspaceToCode(workspace);
+   //sendToPiCode(code)
    console.log(code)
 }
 </script>
