@@ -13,7 +13,7 @@
         <p id="under">Using blockly!</p>    
        
     </p>
-    <a href="#" class="cta" onclick="myTestFunction()">
+    <a href="#" class="cta" onclick="sendButtonClicked()">
         <span>EXECUTE CODE</span>
         <svg width="13px" height="10px" viewBox="0 0 13 10">
           <path d="M1,5 L11,5"></path>
@@ -64,16 +64,17 @@ function sendToPi(code) {
 		url: "robot.py",
 		data: {run:code},
 		success: function(data) {
-			alert("Sent successfully");
+			
 		}
 	});
 }
-function myTestFunction() {
+
+function sendButtonClicked() {
    var code = Blockly.Python.workspaceToCode(workspace);
+   console.log(code);
    sendToPi(code)
 }
 </script>
-
 
 </body>
 </html>
