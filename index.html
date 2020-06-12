@@ -9,10 +9,10 @@
 <body>
 
     <h1>Tank Driving Application</h1>
-    <h3>Using blockly!</h3>    
+    <p>Using blockly!</p>    
     
     
-    <div id="blocklyDiv" style="height: 480px; width: 600px;">
+    <div id="blocklyDiv">
         <xml id="toolbox" style="display: none">
             <block type="controls_if"></block>
             <block type="controls_repeat_ext"></block>
@@ -21,6 +21,7 @@
             <block type="math_arithmetic"></block>
             <block type="text"></block>
             <block type="text_print"></block>
+            <block type="go_forward"></block>
             </xml>
     
     </div>
@@ -31,9 +32,24 @@
 <script src="google-blockly/blockly_compressed.js"></script>
 <script src="google-blockly/blocks_compressed.js"></script>
 <script src="google-blockly/msg/js/en.js"></script>
+<script src="google-blockly/go_forward_block.js"></script>
+<script src="google-blockly/go_forward_generator.js"></script>
+
 <script>
     var workspace = Blockly.inject('blocklyDiv',
-    {toolbox: document.getElementById('toolbox')});
+    {toolbox: document.getElementById('toolbox'),
+    zoom:
+                {controls: true,
+                wheel: true,
+                startScale: 1.0,
+                maxScale: 3,
+                minScale: 0.3,
+                scaleSpeed: 1.2},
+            trashcan: true
+    });
+
+
+
 </script>
 
 </body>
