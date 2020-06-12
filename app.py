@@ -70,10 +70,14 @@ def turnLeft(sec, power):
 setup_GPIO()
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/main.html')
 def index():
-    return render_template('index.html')
+    return render_template('main.html')
 
+@app.route('/')
+def main():
+    return render_template('index.html')
+    
 @app.route('/robot.py', methods=["GET","POST"])
 def robot():
 	print(request.form['run'])

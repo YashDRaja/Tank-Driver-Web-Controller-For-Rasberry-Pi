@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <link rel="stylesheet" href="static/css/blockly.css">
+    <title>UwU Tank driving app UwU</title>
+</head>
+<body>
+    <header>
+        <h1>Tank Driving Application</h1>
+        <p id="under">Using blockly!</p>    
+       
+    </p>
+    <a href="#" class="cta" onclick="sendButtonClicked()">
+        <span>EXECUTE CODE</span>
+        <svg width="13px" height="10px" viewBox="0 0 13 10">
+          <path d="M1,5 L11,5"></path>
+          <polyline points="8 1 12 5 8 9"></polyline>
+        </svg>
+      </a>
+    </header>
+    <div id="blocklyDiv">
+            <xml id="toolbox" style="display: none">
+                <block type="controls_if"></block>
+                <block type="controls_repeat_ext"></block>
+                <block type="logic_compare"></block>
+                <block type="math_number"></block>
+                <block type="math_arithmetic"></block>
+                <block type="text"></block>
+                <block type="text_print"></block>
+                <block type="go_forward"></block>
+                <block type="go_backward"></block>
+                <block type="turn_left"></block>
+                <block type="turn_right"></block>
+                <block type="serial_pin"></block>
+            </xml>
+    </div>
+    
+     
+<script type="text/javascript" src="/static/js/google-blockly/blockly_compressed.js"></script>
+<script type="text/javascript" src="/static/js/google-blockly/blocks_compressed.js"></script>
+<script type="text/javascript" src="/static/js/google-blockly/msg/js/en.js"></script>
+<script type="text/javascript" src="/static/js/google-blockly/custom_block.js"></script>
+<script type="text/javascript" src="/static/js/google-blockly/python_compressed.js"></script>
+<script type="text/javascript" src="/static/js/google-blockly/generators/python/custom_generator.js"></script>
+<script>
+    var workspace = Blockly.inject('blocklyDiv',
+    {toolbox: document.getElementById('toolbox'),
+    zoom:
+                {controls: true,
+                wheel: true,
+                startScale: 1.0,
+                maxScale: 3,
+                minScale: 0.3,
+                scaleSpeed: 1.2},
+            trashcan: true
+    });
+
+
+    function sendToPi(code) {
+        $.ajax({
+            type:"POST",
+            cache: false,
+            dataType: "json",
+            url: "robot.py",
+            data: {run:code},
+            success: function(data) {
+                
+            }
+        });
+    }
+
+    function sendButtonClicked() {
+        var code = Blockly.Python.workspaceToCode(workspace);
+        console.log(code);
+        sendToPi(code)
+    }
+
+</script>
+
+</body>
+</html>
