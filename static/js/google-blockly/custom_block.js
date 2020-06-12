@@ -42,7 +42,7 @@ Blockly.defineBlocksWithJsonArray([{
 },
 {
   "type": "turn_right",
-  "message0": "Amount of seconds to turn %1 Power to run the motors %2",
+  "message0": "Turn Left for _ seconds: %1 Power to run the motors %2",
   "args0": [
     {
       "type": "input_value",
@@ -63,7 +63,7 @@ Blockly.defineBlocksWithJsonArray([{
 },
 {
   "type": "turn_left",
-  "message0": "Amount of seconds to turn %1 Power to run the motors %2",
+  "message0": "Turn Left for _ seconds: %1 Power to run the motors %2",
   "args0": [
     {
       "type": "input_value",
