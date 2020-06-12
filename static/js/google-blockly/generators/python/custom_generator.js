@@ -27,3 +27,11 @@ Blockly.Python['turn_left'] = function(block) {
   var code = 'turnLeft('+value_seconds + "," + value_power+')\n';
   return code;
 };
+Blockly.Python['serial_pin'] = function(block) {
+  var value_pin_number = Blockly.Python.valueToCode(block, 'pin_number', Blockly.Python.ORDER_ATOMIC);
+  var value_seconds = Blockly.Python.valueToCode(block, 'seconds', Blockly.Python.ORDER_ATOMIC);
+  var value_power = Blockly.Python.valueToCode(block, 'power', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = '...\n';
+  return code;
+};
