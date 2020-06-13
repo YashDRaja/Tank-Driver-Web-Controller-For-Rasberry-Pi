@@ -1,84 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-     <link rel="stylesheet" href="../static/css/blockly.css">
-    <title>UwU Tank driving app UwU</title>
-</head>
-<body>
-    <header>
-        <h1>Tank Driving Application</h1>
-        <p id="under">Using blockly!</p>    
-       
-    </p>
-    <a href="#" class="cta" onclick="sendButtonClicked()">
-        <span>EXECUTE CODE</span>
-        <svg width="13px" height="10px" viewBox="0 0 13 10">
-          <path d="M1,5 L11,5"></path>
-          <polyline points="8 1 12 5 8 9"></polyline>
-        </svg>
-      </a>
-    </header>
-    <div id="blocklyDiv">
-            <xml id="toolbox" style="display: none">
-                <block type="controls_if"></block>
-                <block type="controls_repeat_ext"></block>
-                <block type="logic_compare"></block>
-                <block type="math_number"></block>
-                <block type="math_arithmetic"></block>
-                <block type="go_forward"></block>
-                <block type="go_backward"></block>
-                <block type="turn_left"></block>
-                <block type="turn_right"></block>
-                <block type="serial_pin"></block>
-                <block type="serial_pin_time"></block>
-                <block type="wait"></block>
-            </xml>
-    </div>
-    
-     
-<script type="text/javascript" src="/static/js/google-blockly/blockly_compressed.js"></script>
-<script type="text/javascript" src="/static/js/google-blockly/blocks_compressed.js"></script>
-<script type="text/javascript" src="/static/js/google-blockly/msg/js/en.js"></script>
-<script type="text/javascript" src="/static/js/google-blockly/custom_block.js"></script>
-<script type="text/javascript" src="/static/js/google-blockly/python_compressed.js"></script>
-<script type="text/javascript" src="/static/js/google-blockly/generators/python/custom_generator.js"></script>
-<script>
-    var workspace = Blockly.inject('blocklyDiv',
-    {toolbox: document.getElementById('toolbox'),
-    zoom:
-                {controls: true,
-                wheel: true,
-                startScale: 1.0,
-                maxScale: 3,
-                minScale: 0.3,
-                scaleSpeed: 1.2},
-            trashcan: true
-    });
-
-
-    function sendToPi(code) {
-        $.ajax({
-            type:"POST",
-            cache: false,
-            dataType: "json",
-            url: "robot.py",
-            data: {run:code},
-            success: function(data) {
-                
-            }
-        });
-    }
-
-    function sendButtonClicked() {
-        var code = Blockly.Python.workspaceToCode(workspace);
-        console.log(code);
-        sendToPi(code)
-    }
-
-</script>
-
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Grayscale - Start Bootstrap Theme</title>
+        <link rel="icon" type="image/x-icon" href="static/assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="static/css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container d-flex h-100 align-items-center">
+                <div class="mx-auto text-center">
+                    <h1 class="mx-auto my-0 text-uppercase">Grayscale</h1>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">The hands-on learning tool.</h2>
+                    <a class="btn btn-primary js-scroll-trigger" href="main.html">Get Started</a>
+                </div>
+            </div>
+        </header>
+        <footer class="footer bg-black small text-center text-white-50"><div class="container"></div></footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="static/js/scripts.js"></script>
+    </body>
 </html>
