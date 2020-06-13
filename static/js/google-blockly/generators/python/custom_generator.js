@@ -27,11 +27,24 @@ Blockly.Python['turn_left'] = function(block) {
   var code = 'turnLeft('+value_seconds + "," + value_power+')\n';
   return code;
 };
-Blockly.Python['serial_pin'] = function(block) {
+Blockly.Python['serial_pin_time'] = function(block) {
   var value_pin_number = Blockly.Python.valueToCode(block, 'pin_number', Blockly.Python.ORDER_ATOMIC);
   var value_seconds = Blockly.Python.valueToCode(block, 'seconds', Blockly.Python.ORDER_ATOMIC);
   var value_power = Blockly.Python.valueToCode(block, 'power', Blockly.Python.ORDER_ATOMIC);
   // TODO: Assemble Python into code variable.
-  var code = '...\n';
+  var code = 'activatePinTime('+value_pin_number+value_seconds+value_power+")\n";
+  return code;
+};
+Blockly.Python['serial_pin'] = function(block) {
+  var value_pin_number = Blockly.Python.valueToCode(block, 'pin_number', Blockly.Python.ORDER_ATOMIC);
+  var value_power = Blockly.Python.valueToCode(block, 'power', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = 'activatePin('+value_pin_number+value_power+")\n";
+  return code;
+};
+Blockly.Python['wait'] = function(block) {
+  var value_wait = Blockly.Python.valueToCode(block, 'wait', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = 'slp('+value_wait+')';
   return code;
 };
