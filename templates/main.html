@@ -11,8 +11,7 @@
     <header>
         <h1>Tank Driving Application</h1>
         <p id="under">Using blockly!</p>    
-       
-    </p>
+    
     <a href="#" class="cta" onclick="sendButtonClicked()">
         <span>EXECUTE CODE</span>
         <svg width="13px" height="10px" viewBox="0 0 13 10">
@@ -20,7 +19,7 @@
           <polyline points="8 1 12 5 8 9"></polyline>
         </svg>
       </a>
-    </header>
+    </header>>
     <div id="blocklyDiv">
             <xml id="toolbox" style="display: none">
                 <block type="controls_if"></block>
@@ -38,7 +37,7 @@
             </xml>
     </div>
     
-     
+    <textarea id="javaScriptcodeUpdate" readonly>Converted javascript code shows up here</textarea>
 <script type="text/javascript" src="/static/js/google-blockly/blockly_compressed.js"></script>
 <script type="text/javascript" src="/static/js/google-blockly/blocks_compressed.js"></script>
 <script type="text/javascript" src="/static/js/google-blockly/msg/js/en.js"></script>
@@ -71,6 +70,12 @@
             }
         });
     }
+    function realTimeUpdate(event){
+        var feedBackCode = Blockly.JavaScript.workspaceToCode(workspace)
+        document.getElementById('javaScriptcodeUpdate').value = feedBackCode;
+           
+    }
+    workspace.addChangeListener(realTimeUpdate);
 
     function sendButtonClicked() {
         var code = Blockly.Python.workspaceToCode(workspace);
