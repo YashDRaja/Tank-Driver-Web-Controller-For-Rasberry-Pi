@@ -32,7 +32,7 @@ header p#under{
     height: 100vh;
 }
 
-textarea#javaScriptcodeUpdate{
+textarea#pythonCodeUpdate{
   background-color: #111;
   color: #FF0000;
   border: 0;
@@ -154,7 +154,7 @@ a {
     float: left;
     text-align: center;
   }
-    textarea#javaScriptcodeUpdate{
+    textarea#pythonCodeUpdate{
       background-color: #111;
       color: #FF0000;
       border: 0;
@@ -209,7 +209,7 @@ a {
     width: 100%;
     text-align: center;
   }
-    textarea#javaScriptcodeUpdate{
+    textarea#pythonCodeUpdate{
       background-color: #111;
       color: #FF0000;
       border: 0;

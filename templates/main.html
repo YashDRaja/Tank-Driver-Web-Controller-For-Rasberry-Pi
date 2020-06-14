@@ -37,7 +37,7 @@
             </xml>
     </div>
     
-    <textarea id="javaScriptcodeUpdate" readonly>Converted javascript code shows up here</textarea>
+    <textarea id="pythonCodeUpdate" readonly>Converted python code shows up here</textarea>
 <script type="text/javascript" src="/static/js/google-blockly/blockly_compressed.js"></script>
 <script type="text/javascript" src="/static/js/google-blockly/blocks_compressed.js"></script>
 <script type="text/javascript" src="/static/js/google-blockly/msg/js/en.js"></script>
@@ -71,7 +71,7 @@
         });
     }
     function realTimeUpdate(event){
-        var feedBackCode = Blockly.JavaScript.workspaceToCode(workspace)
+        var feedBackCode = Blockly.Python.workspaceToCode(workspace)
         document.getElementById('javaScriptcodeUpdate').value = feedBackCode;
            
     }
