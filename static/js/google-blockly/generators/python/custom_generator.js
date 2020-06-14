@@ -45,6 +45,6 @@ Blockly.Python['serial_pin'] = function(block) {
 Blockly.Python['wait'] = function(block) {
   var value_wait = Blockly.Python.valueToCode(block, 'wait', Blockly.Python.ORDER_ATOMIC);
   // TODO: Assemble Python into code variable.
-  var code = 'slp('+value_wait+')';
+  var code = 'time.sleep('+value_wait+')';
   return code;
 };
