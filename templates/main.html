@@ -72,7 +72,14 @@
     }
     function realTimeUpdate(event){
         var feedBackCode = Blockly.Python.workspaceToCode(workspace)
-        document.getElementById('pythonCodeUpdate').value = feedBackCode;
+        document.getElementById('pythonCodeUpdate').value = `#forward(x,y) tank moves forward for x seconds with y power\n
+        #backward(x,y) tank moves backward for x seconds with y power\n
+        #turnLeft(x,y) tank turns left for x seconds with y power\n
+        #turnRight(x,y) tank turns right for x seconds with y power\n
+        #activatePin(x,y) actives pin x on rasberry pi with y power\n
+        #activatePinTime(x,y,z) actives pin x on rasberry pi with y power for z seconds\n
+        #time.sleep(x) is a built in python command to wait for x seconds\n\n
+        USER CODE:\n\n`+feedBackCode;
            
     }
     workspace.addChangeListener(realTimeUpdate);
