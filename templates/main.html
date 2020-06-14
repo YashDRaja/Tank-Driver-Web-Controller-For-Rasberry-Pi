@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <link rel="stylesheet" href="../static/css/blockly.css">
+    <title>UwU Tank driving app UwU</title>
+</head>
+<body>
+    <header>
+        <h1>Tank Driving Application</h1>
+        <p id="under">Using blockly!</p>    
+    
+    <a href="#" class="cta" onclick="sendButtonClicked()">
+        <span>EXECUTE CODE</span>
+        <svg width="13px" height="10px" viewBox="0 0 13 10">
+          <path d="M1,5 L11,5"></path>
+          <polyline points="8 1 12 5 8 9"></polyline>
+        </svg>
+      </a>
+      <button id ="dwn-btn">
+
+        DOWNLOAD SOURCE FILE
+
+      </button>
+    </header>
+    
+    <div id="blocklyDiv">
+            <xml id="toolbox" style="display: none">
+                <block type="controls_if"></block>
+                <block type="controls_repeat_ext"></block>
+                <block type="logic_compare"></block>
+                <block type="math_number"></block>
+                <block type="math_arithmetic"></block>
+                <block type="go_forward"></block>
+                <block type="go_backward"></block>
+                <block type="turn_left"></block>
+                <block type="turn_right"></block>
+                <block type="serial_pin"></block>
+                <block type="serial_pin_time"></block>
+                <block type="wait"></block>
+            </xml>
+    </div>
+    
+    <textarea id="pythonCodeUpdate" readonly>Converted python code shows up here</textarea>
+    <textarea id="text-val" readonly style="display: none;">
+    
+        from flask import Flask, render_template, request
+        import json
+        import time
+        import RPi.GPIO as io # using RPi.GPIO
+        
+        left_pin = 10
+        right_pin = 8
+        STOP = 0
+        
+        def setup_GPIO():
+            print("Setting up GPIO...")
+            io.setmode(io.BOARD)
+            io.setup(left_pin,io.OUT, initial=io.LOW)
+            io.setup(right_pin,io.OUT, initial=io.LOW)
+            print("Done setting up!")
+        
+        def move(sec, pin, value):
+            print("Moving " + str(pin) + " for " + str(sec) + " seconds")
+            drive_time(sec, pin, value)
+            drive_motor(pin, STOP)
+            print("Done moving!")
+        
+        def drive_time(sec, pin, value):
+            io.output(pin, value)
+            time.sleep(sec)
+        
+        def drive_motor(pin, value):
+            io.output(pin,value)
+        
+        def run_task(str):
+            exec(str)
+        
+        def forward(sec, power): 
+            print("Driving forwards with " + str(power) + " power for " + str(sec) + " seconds!")
+            drive_motor(left_pin, power) 
+            drive_motor(right_pin, power)
+            time.sleep(sec)
+            print("Stopping...")
+            drive_motor(left_pin, STOP)
+            drive_motor(right_pin, STOP)
+        
+        def backward(sec, power): 
+            print("Driving backwards with " + str(power) + " power for " + str(sec) + " seconds!")
+            drive_motor(left_pin, -power) 
+            drive_motor(right_pin, -power)
+            time.sleep(sec)
+            print("Stopping...")
+            drive_motor(left_pin, STOP)
+            drive_motor(right_pin, STOP)
+        
+        def turnRight(sec, power): 
+            print("Driving backwards with " + str(power) + " power for " + str(sec) + " seconds!")
+            drive_motor(left_pin, power) 
+            drive_motor(right_pin, -power)
+            time.sleep(sec)
+            print("Stopping...")
+            drive_motor(left_pin, STOP)
+            drive_motor(right_pin, STOP)
+        
+        def turnLeft(sec, power): 
+            print("Driving backwards with " + str(power) + " power for " + str(sec) + " seconds!")
+            drive_motor(left_pin, -power) 
+            drive_motor(right_pin, power)
+            time.sleep(sec)
+            print("Stopping...")
+            drive_motor(left_pin, STOP)
+            drive_motor(right_pin, STOP)
+        
+        
+        setup_GPIO()
+        app = Flask(__name__)
+        
+        @app.route('/main.html')
+        def index():
+            return render_template('main.html')
+        
+        @app.route('/')
+        def main():
+            return render_template('index.html')
+            
+        @app.route('/robot.py', methods=["GET","POST"])
+        def robot():
+            print(request.form['run'])
+            run_task(request.form['run'])
+            return "Sent"
+        
+        if __name__ == '__main__':
+            app.run(debug=True, host='0.0.0.0')
+    </textarea>
+
+
+<script type="text/javascript" src="/static/js/google-blockly/blockly_compressed.js"></script>
+<script type="text/javascript" src="/static/js/google-blockly/blocks_compressed.js"></script>
+<script type="text/javascript" src="/static/js/google-blockly/msg/js/en.js"></script>
+<script type="text/javascript" src="/static/js/google-blockly/custom_block.js"></script>
+<script type="text/javascript" src="/static/js/google-blockly/python_compressed.js"></script>
+<script type="text/javascript" src="/static/js/google-blockly/generators/python/custom_generator.js"></script>
+<script>
+    var workspace = Blockly.inject('blocklyDiv',
+    {toolbox: document.getElementById('toolbox'),
+    zoom:
+                {controls: true,
+                wheel: true,
+                startScale: 1.0,
+                maxScale: 3,
+                minScale: 0.3,
+                scaleSpeed: 1.2},
+            trashcan: true
+    });
+
+
+    function sendToPi(code) {
+        $.ajax({
+            type:"POST",
+            cache: false,
+            dataType: "json",
+            url: "robot.py",
+            data: {run:code},
+            success: function(data) {
+                
+            }
+        });
+    }
+    function realTimeUpdate(event){
+        var feedBackCode = Blockly.Python.workspaceToCode(workspace)
+        document.getElementById('pythonCodeUpdate').value = `#forward(x,y) tank moves forward for x seconds with y power\n
+        #backward(x,y) tank moves backward for x seconds with y power\n
+        #turnLeft(x,y) tank turns left for x seconds with y power\n
+        #turnRight(x,y) tank turns right for x seconds with y power\n
+        #activatePin(x,y) actives pin x on rasberry pi with y power\n
+        #activatePinTime(x,y,z) actives pin x on rasberry pi with y power for z seconds\n
+        #time.sleep(x) is a built in python command to wait for x seconds\n\n
+        USER CODE:\n\n`+feedBackCode;
+           
+    }
+    workspace.addChangeListener(realTimeUpdate);
+
+    function sendButtonClicked() {
+        var code = Blockly.Python.workspaceToCode(workspace);
+        console.log(code);
+        sendToPi(code)
+    }
+function download(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    }
+
+        // Start file download.
+    document.getElementById("dwn-btn").addEventListener("click", function(){
+        // Generate download of hello.txt file with some content
+        var text = document.getElementById("text-val").value;
+        var filename = "app.txt";
+        
+        download(filename, text);
+    }, false);
+</script>
+
+</body>
+</html>
