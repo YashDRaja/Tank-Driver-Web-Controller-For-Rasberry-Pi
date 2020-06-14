@@ -72,7 +72,7 @@
     }
     function realTimeUpdate(event){
         var feedBackCode = Blockly.Python.workspaceToCode(workspace)
-        document.getElementById('javaScriptcodeUpdate').value = feedBackCode;
+        document.getElementById('pythonCodeUpdate').value = feedBackCode;
            
     }
     workspace.addChangeListener(realTimeUpdate);
