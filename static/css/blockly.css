@@ -32,7 +32,7 @@ header p#under{
     height: 100vh;
 }
 
-textarea#pythonCodeUpdate{
+textarea#javaScriptcodeUpdate{
   background-color: #111;
   color: #FF0000;
   border: 0;
@@ -48,7 +48,11 @@ textarea#pythonCodeUpdate{
   top: 0;
   left: 78vw;
 }
-
+button#dwn-btn{
+  width: 100%;
+  height: 40px;
+  margin-top: 75vh;
+}
 a {
     text-decoration: none;
     color: inherit;
@@ -154,7 +158,7 @@ a {
     float: left;
     text-align: center;
   }
-    textarea#pythonCodeUpdate{
+    textarea#javaScriptcodeUpdate{
       background-color: #111;
       color: #FF0000;
       border: 0;
@@ -209,7 +213,7 @@ a {
     width: 100%;
     text-align: center;
   }
-    textarea#pythonCodeUpdate{
+    textarea#javaScriptcodeUpdate{
       background-color: #111;
       color: #FF0000;
       border: 0;
