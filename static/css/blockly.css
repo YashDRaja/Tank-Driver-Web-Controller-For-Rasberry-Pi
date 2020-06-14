@@ -32,7 +32,7 @@ header p#under{
     height: 100vh;
 }
 
-textarea#javaScriptcodeUpdate{
+textarea#pythonCodeUpdate{
   background-color: #111;
   color: #FF0000;
   border: 0;
